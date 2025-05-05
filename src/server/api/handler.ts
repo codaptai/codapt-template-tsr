@@ -15,5 +15,8 @@ export default defineEventHandler((event) => {
     createContext() {
       return {};
     },
+    onError({ error, path }) {
+      console.error(`tRPC error on '${path}':`, error);
+    },
   });
 });

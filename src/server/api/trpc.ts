@@ -4,6 +4,16 @@ import { ZodError } from "zod";
 
 const t = initTRPC.create({
   transformer: superjson,
+  sse: {
+    enabled: true,
+    client: {
+      reconnectAfterInactivityMs: 5000,
+    },
+    ping: {
+      enabled: true,
+      intervalMs: 2500,
+    },
+  },
   errorFormatter({ shape, error }) {
     return {
       ...shape,
