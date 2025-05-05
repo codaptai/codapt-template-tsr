@@ -73,7 +73,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
           condition: (op) => op.type === "subscription",
           false: httpBatchStreamLink({
             transformer: SuperJSON,
-            url: getBaseUrl() + "/api/trpc",
+            url: getBaseUrl() + "/trpc",
             headers: () => {
               const headers = new Headers();
               headers.set("x-trpc-source", "nextjs-react");
@@ -82,7 +82,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
           }),
           true: httpSubscriptionLink({
             transformer: SuperJSON,
-            url: getBaseUrl() + "/api/trpc",
+            url: getBaseUrl() + "/trpc",
           }),
         }),
       ],
