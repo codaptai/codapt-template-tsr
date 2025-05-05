@@ -4,7 +4,7 @@ IMPORTANT: To check if we should show loading state for a given query, we need t
 
 Be extremely careful using `isPending` by itself to avoid erroneously getting stuck in loading states if the query is disabled by the `enabled` property.
 
-IMPORTANT: There is no `onSuccess` or `onError` callback in the useQuery hook.
+IMPORTANT: There is no `onSuccess` or `onError` callback in the `useQuery` hook.
 
 To get the data from a query, use the `data` property.
 
@@ -122,3 +122,5 @@ export function MyComponent() {
   // ...
 }
 ```
+
+IMPORTANT: Similarly to `useQuery`, here is no `onSuccess` or `onError` callback in the `useInfiniteQuery` hook.
