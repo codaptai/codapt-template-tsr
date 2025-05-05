@@ -5,4 +5,4 @@ cd `dirname $0`
 cd .. # .codapt
 cd .. # project root
 
-docker/compose down --remove-orphans
+scripts/docker-compose down --remove-orphans
