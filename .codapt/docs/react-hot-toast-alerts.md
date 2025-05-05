@@ -25,3 +25,5 @@ export function MyComponent(...) {
   // ...
 }
 ```
+
+If we use `react-hot-toast`, we also need to add the ``<Toaster />` component to `__root.tsx`.
