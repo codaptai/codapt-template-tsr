@@ -17,6 +17,6 @@ You can import from `src/...` with the alias `~/...`.
 
 Never use headers with tRPC. Pass all data, including authentication tokens, as parameters. We can significantly reduce complexity of our codebase by avoiding middleware.
 
-For our frontend, we use a modern, clean tech-startup aesthetic.
+For all frontend components, focus on good design, using your own judgement when there is not a clear intended direction. Take two passes at each component/page -- first, implement the functionality, then re-visit it to improve the design as per any specifications or best practices.
 
 When you use new packages/libraries, make sure to read documents related to them. You do not need to modify `package.json` to install them -- our developer tooling will automatically update `package.json` and install new dependencies when we run the app.
