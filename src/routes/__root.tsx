@@ -3,8 +3,6 @@ import {
   createRootRoute,
   useRouterState,
 } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const Route = createRootRoute({
@@ -21,8 +19,6 @@ function RootComponent() {
   return (
     <TRPCReactProvider>
       <Outlet />
-      <TanStackRouterDevtools position="bottom-left" />
-      <ReactQueryDevtools position="bottom" buttonPosition="bottom-right" />
     </TRPCReactProvider>
   );
 }
