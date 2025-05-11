@@ -2,6 +2,8 @@ import { createApp } from "vinxi";
 import reactRefresh from "@vitejs/plugin-react";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
+import { config } from "vinxi/plugins/config";
+import { env } from "./src/env";
 
 export default createApp({
   server: {
@@ -23,6 +25,14 @@ export default createApp({
       handler: "./src/server/api/handler.ts",
       target: "server",
       plugins: () => [
+        config("allowedHosts", {
+          // @ts-ignore
+          server: {
+            allowedHosts: env.BASE_URL
+              ? [env.BASE_URL.split("://")[1]]
+              : undefined,
+          },
+        }),
         tsConfigPaths({
           projects: ["./tsconfig.json"],
         }),
@@ -34,6 +44,14 @@ export default createApp({
       handler: "./index.html",
       target: "browser",
       plugins: () => [
+        config("allowedHosts", {
+          // @ts-ignore
+          server: {
+            allowedHosts: env.BASE_URL
+              ? [env.BASE_URL.split("://")[1]]
+              : undefined,
+          },
+        }),
         tsConfigPaths({
           projects: ["./tsconfig.json"],
         }),
