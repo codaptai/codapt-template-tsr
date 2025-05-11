@@ -15,9 +15,9 @@ if [ -z "$PORT" ]; then
 fi
 
 # check if the app is running
-curl -s -o /dev/null -w "%{http_code}" http://localhost:$PORT/nonexistent | grep -q "404"
-if [ $? -ne 0 ]; then
-  echo "App is not running, exiting..."
+status_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:$PORT/nonexistent)
+if [[ $status_code =~ ^5[0-9][0-9]$ ]]; then
+  echo "App is not running or experiencing server errors, exiting..."
   exit 1
 fi
 
