@@ -15,3 +15,5 @@ await db.someTable.create({
 ```
 
 Our CI pipeline automatically migrates data, so do not try to generate Prisma migrations.
+
+For primary keys, always use autoincrement integer unless specified otherwise. Do not include an `updatedAt` field unless needed.
