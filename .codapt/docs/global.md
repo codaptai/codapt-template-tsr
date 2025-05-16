@@ -32,3 +32,5 @@ Use `lucide-react` version `^0.510.0` for icons.
 ⁠Use your own judgment and taste when the design direction is ambiguous. Aim for quality on par with great well-known products. Follow atomic design principles (small, reusable components).
 
 At runtime, there will be an auto-generated `routeTree.gen.ts`. You can assume that this will be generated correctly; feel free to import from it.
+
+Our app runs in a managed runtime environment, which automatically runs scripts like `.codapt/scripts/run`. These scripts most likely do not need to be modified.
