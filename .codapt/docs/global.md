@@ -26,3 +26,5 @@ When you use new packages/libraries, make sure to read documents related to them
 Use Tailwind CSS for styling without custom styles wherever possible. Custom styles should only be used as a last resort.
 
 Use `lucide-react` version `^0.510.0` for icons.
+
+⁠Use your own judgment and taste when the design direction is ambiguous. Aim for quality on par with great well-known products. Follow atomic design principles (small, reusable components).
