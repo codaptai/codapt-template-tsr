@@ -4,7 +4,7 @@ This is a full-stack TypeScript application. We use:
 - React
 - tRPC
 - Prisma ORM
-- Tailwind
+- Tailwind CSS
 - Zod
 - Docker & Docker Compose
 - Zustand & Zustand Persist middleware
@@ -22,3 +22,7 @@ For all frontend components, focus on good design, using your own judgement when
 When you're creating pages that don't wrap other pages, **always** include "index.tsx" in the filename so that we don't accidentally have clashing routes. See the `tanstack-router/pages` document for details.
 
 When you use new packages/libraries, make sure to read documents related to them. You do not need to modify `package.json` to install them -- our developer tooling will automatically update `package.json` and install new dependencies when we run the app.
+
+Use Tailwind CSS for styling without custom styles wherever possible. Custom styles should only be used as a last resort.
+
+Use `lucide-react` version `^0.510.0` for icons.
