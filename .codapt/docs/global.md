@@ -5,6 +5,8 @@ This is a full-stack TypeScript application. We use:
 - tRPC
 - Prisma ORM
 - Tailwind CSS
+- `@tailwindcss/forms`
+- HeadlessUI (`@headlessui/react`)
 - Zod
 - Docker & Docker Compose
 - Zustand & Zustand Persist middleware
