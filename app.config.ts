@@ -3,7 +3,7 @@ import reactRefresh from "@vitejs/plugin-react";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 import { config } from "vinxi/plugins/config";
-import { env } from "./src/env";
+import { env } from "./src/server/env";
 
 export default createApp({
   server: {
