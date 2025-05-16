@@ -24,3 +24,5 @@ pnpm-lock.yaml
 /playwright/.cache/
 
 src/routeTree.gen.ts
+
+app.config.timestamp_*.js
