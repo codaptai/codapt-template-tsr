@@ -15,6 +15,8 @@ When storing data like auth tokens, we should use Zustand Persist.
 
 You can import from `src/...` with the alias `~/...`.
 
+Keep server-specific code in `src/server`, and avoid importing files in `src/server` from files outside of `src/server`. This helps maintain clean client-server separation.
+
 Never use headers with tRPC. Pass all data, including authentication tokens, as parameters. Avoid using tRPC middleware -- use helper functions in procedures to handle things like authentication.
 
 For all frontend components, focus on good design, using your own judgement when there is not a clear intended direction. Take two passes at each component/page -- first, implement the functionality, then re-visit it to improve the design as per any specifications or best practices.
@@ -28,3 +30,5 @@ Use Tailwind CSS for styling without custom styles wherever possible. Custom sty
 Use `lucide-react` version `^0.510.0` for icons.
 
 ⁠Use your own judgment and taste when the design direction is ambiguous. Aim for quality on par with great well-known products. Follow atomic design principles (small, reusable components).
+
+At runtime, there will be an auto-generated `routeTree.gen.ts`. You can assume that this will be generated correctly; feel free to import from it.
