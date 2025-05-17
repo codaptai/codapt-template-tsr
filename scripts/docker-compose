@@ -45,10 +45,10 @@ if [ -z "$APP_NAME" ]; then
 fi
 
 # make sure we have PORT
-if [ -z "$PORT" ]; then
-  echo "PORT is not set, setting to 8000 and adding to .env..."
-  add_to_env "PORT=8000"
-  PORT=8000
+if [ -z "$LISTEN_PORT" ]; then
+  echo "LISTEN_PORT is not set, setting to 8000 and adding to .env..."
+  add_to_env "LISTEN_PORT=8000"
+  LISTEN_PORT=8000
 fi
 
 # make sure we have NODE_ENV

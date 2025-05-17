@@ -9,13 +9,13 @@ cd .. # project root
 source .env
 
 # ensure port is set
-if [ -z "$PORT" ]; then
-  echo "PORT is not set, exiting..."
+if [ -z "$LISTEN_PORT" ]; then
+  echo "LISTEN_PORT is not set, exiting..."
   exit 1
 fi
 
 # check if the app is running
-status_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:$PORT/nonexistent)
+status_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:$LISTEN_PORT/nonexistent)
 if [[ $status_code =~ ^5[0-9][0-9]$ ]]; then
   echo "App is not running or experiencing server errors, exiting..."
   exit 1
