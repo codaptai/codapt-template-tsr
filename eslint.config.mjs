@@ -31,7 +31,7 @@ export default tseslint.config([
     },
   },
   {
-    ignores: [".vinxi/", ".output/", "src/routeTree.gen.ts"],
+    ignores: [".vinxi/", ".output/"],
   },
   {
     settings: {
