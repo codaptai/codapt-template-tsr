@@ -36,3 +36,5 @@ Use `lucide-react` version `^0.510.0` for icons.
 At runtime, there will be an auto-generated `routeTree.gen.ts`. You can assume that this will be generated correctly; feel free to import from it.
 
 Our app runs in a managed runtime environment, which automatically runs scripts like `.codapt/scripts/run`. These scripts most likely do not need to be modified.
+
+Any logic that should be run every time the app starts, such as seeding database data, can be added to `src/server/scripts/setup.ts`.
