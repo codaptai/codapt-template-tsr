@@ -1,12 +1,12 @@
 {
   "files.watcherExclude": {
-    "**/routeTree.gen.ts": true
+    "**/generated/**": true
   },
   "search.exclude": {
-    "**/routeTree.gen.ts": true
+    "**/generated/**": true
   },
   "files.readonlyInclude": {
-    "**/routeTree.gen.ts": true
+    "**/generated/**": true
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
