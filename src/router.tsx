@@ -1,5 +1,5 @@
 import { createRouter as createTanStackRouter } from "@tanstack/react-router";
-import { routeTree } from "./routeTree.gen";
+import { routeTree } from "./generated/tanstack-router/routeTree.gen";
 import { TRPCReactProvider } from "./trpc/react";
 
 export function createRouter() {

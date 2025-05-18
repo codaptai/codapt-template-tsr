@@ -4,65 +4,29 @@ import {
   splitLink,
   httpBatchStreamLink,
   httpSubscriptionLink,
+  createTRPCClient,
 } from "@trpc/client";
-import { createTRPCReact } from "@trpc/react-query";
-import { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
+import { createTRPCContext } from "@trpc/tanstack-react-query";
 import { useState } from "react";
 import SuperJSON from "superjson";
 
 import { AppRouter } from "~/server/api/root";
-import { createQueryClient } from "./query-client";
+import { getQueryClient } from "./query-client";
 
-let clientQueryClientSingleton: QueryClient | undefined = undefined;
-const getQueryClient = () => {
-  if (typeof window === "undefined") {
-    // Server: always make a new query client
-    return createQueryClient();
-  }
-  // Browser: use singleton pattern to keep the same query client
-  return (clientQueryClientSingleton ??= createQueryClient());
-};
+const { TRPCProvider, useTRPC, useTRPCClient } = createTRPCContext<AppRouter>();
 
-export const api = createTRPCReact<AppRouter>({
-  overrides: {
-    useMutation: {
-      /**
-       * This function is called whenever a `.useMutation` succeeds
-       **/
-      async onSuccess(opts) {
-        /**
-         * @note that order here matters:
-         * The order here allows route changes in `onSuccess` without
-         * having a flash of content change whilst redirecting.
-         **/
-        // Calls the `onSuccess` defined in the `useQuery()`-options:
-        await opts.originalFn();
-        // Invalidate all queries in the react-query cache:
-        await opts.queryClient.invalidateQueries();
-      },
-    },
-  },
-});
+export { useTRPC, useTRPCClient };
 
-/**
- * Inference helper for inputs.
- *
- * @example type HelloInput = RouterInputs['example']['hello']
- */
-export type RouterInputs = inferRouterInputs<AppRouter>;
-
-/**
- * Inference helper for outputs.
- *
- * @example type HelloOutput = RouterOutputs['example']['hello']
- */
-export type RouterOutputs = inferRouterOutputs<AppRouter>;
+function getBaseUrl() {
+  if (typeof window !== "undefined") return window.location.origin;
+  return `http://localhost:3000`;
+}
 
 export function TRPCReactProvider(props: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
 
   const [trpcClient] = useState(() =>
-    api.createClient({
+    createTRPCClient<AppRouter>({
       links: [
         loggerLink({
           enabled: (op) =>
@@ -74,11 +38,6 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
           false: httpBatchStreamLink({
             transformer: SuperJSON,
             url: getBaseUrl() + "/trpc",
-            headers: () => {
-              const headers = new Headers();
-              headers.set("x-trpc-source", "nextjs-react");
-              return headers;
-            },
           }),
           true: httpSubscriptionLink({
             transformer: SuperJSON,
@@ -91,15 +50,9 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <api.Provider client={trpcClient} queryClient={queryClient}>
+      <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
         {props.children}
-      </api.Provider>
+      </TRPCProvider>
     </QueryClientProvider>
   );
-}
-
-function getBaseUrl() {
-  if (typeof window !== "undefined") return window.location.origin;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return `http://localhost:${process.env.PORT ?? 3000}`;
 }

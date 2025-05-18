@@ -31,7 +31,7 @@ export default tseslint.config([
     },
   },
   {
-    ignores: [".vinxi/", ".output/"],
+    ignores: [".vinxi/", ".output/", "src/generated"],
   },
   {
     settings: {

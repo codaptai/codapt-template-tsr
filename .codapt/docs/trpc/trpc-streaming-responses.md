@@ -15,4 +15,4 @@ const someProcedure = baseProcedure.query(async function* () {
 });
 ```
 
-Then, on the React client side, tRPC's `api.someProcedure.useQuery(...).data` will be an array of all the data received so far (including previous values).
+Then, on the React client side, `myQuery.data` will be an array of all the data received so far (including previous values).

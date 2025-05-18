@@ -23,6 +23,6 @@ pnpm-lock.yaml
 /blob-report/
 /playwright/.cache/
 
-src/routeTree.gen.ts
+src/generated
 
 app.config.timestamp_*.js
