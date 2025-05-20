@@ -280,3 +280,20 @@ const result = await client.path.to.procedure.query({
   /** input */
 });
 ```
+
+## Important reminders about using tRPC with Tanstack React Query
+
+When you want to pass normal Tanstack React Query options to a tRPC query (or mutation), do not pass them directly to useQuery or useMutation. Instead, pass them as the second argument to the `queryOptions` or `mutationOptions` functions.
+
+```tsx
+const queryOptions = trpc.path.to.query.queryOptions(
+  {
+    /** input */
+  },
+  {
+    /** Tanstack React Query options */
+  },
+);
+
+const query = useQuery(queryOptions);
+```
