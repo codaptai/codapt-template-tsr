@@ -2,7 +2,7 @@ import {
   createCallerFactory,
   createTRPCRouter,
   baseProcedure,
-} from "~/server/api/trpc";
+} from "~/server/trpc/main";
 
 export const appRouter = createTRPCRouter({
   // when we add a real procedure, remove this placeholder

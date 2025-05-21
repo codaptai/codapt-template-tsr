@@ -1,19 +1,19 @@
-When we want to implement an API endpoint, we have two options:
+When we want to implement a tRPC procedure, we normally have two options:
 
 - It can be a query procedure, for fetching application data
 - It can be a mutation procedure, for modifying application data
 
-We create a separate file for each procedure in `src/server/api/procedures` (rather than grouping them into sub-routers or big files).
+We create a separate file for each procedure in `src/server/trpc/procedures` (rather than grouping them into sub-routers or big files).
 
 Example of a query procedure:
 
-src/server/api/procedures/getPostContent.ts
+src/server/trpc/procedures/getPostContent.ts
 
 ```
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { db } from "~/server/db";
-import { baseProcedure } from "~/server/api/trpc";
+import { baseProcedure } from "~/server/trpc/main";
 
 export const getPostContent = baseProcedure
   .input(z.object({ postId: z.number() }))
@@ -37,13 +37,13 @@ export const getPostContent = baseProcedure
 
 Example of a mutation procedure:
 
-src/server/api/procedures/updatePostContent.ts
+src/server/trpc/procedures/updatePostContent.ts
 
 ```
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { db } from "~/server/db";
-import { baseProcedure } from "~/server/api/trpc";
+import { baseProcedure } from "~/server/trpc/main";
 
 export const updatePostContent = baseProcedure
   .input(z.object({ authToken: z.string(), postId: z.number(), content: z.string() }))
@@ -78,9 +78,9 @@ export const updatePostContent = baseProcedure
   });
 ```
 
-When we add tRPC procedures, we also need to add them in the root router in src/server/api/root.ts:
+When we add tRPC procedures, we also need to add them in the root router in src/server/trpc/root.ts:
 
-src/server/api/root.ts
+src/server/trpc/root.ts
 
 ```
 // ...

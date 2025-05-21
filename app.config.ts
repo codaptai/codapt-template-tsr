@@ -22,7 +22,7 @@ export default createApp({
       type: "http",
       name: "trpc",
       base: "/trpc",
-      handler: "./src/server/api/handler.ts",
+      handler: "./src/server/trpc/handler.ts",
       target: "server",
       plugins: () => [
         config("allowedHosts", {
@@ -59,7 +59,7 @@ export default createApp({
           target: "react",
           autoCodeSplitting: true,
           routesDirectory: "./src/routes",
-          generatedRouteTree: "./src/routeTree.gen.ts",
+          generatedRouteTree: "./src/generated/routeTree.gen.ts",
         }),
         reactRefresh(),
       ],
