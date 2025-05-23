@@ -40,3 +40,10 @@ At runtime, there will be an auto-generated `routeTree.gen.ts`. You can assume t
 Our app runs in a managed runtime environment, which automatically runs scripts like `.codapt/scripts/run`. These scripts most likely do not need to be modified.
 
 Any logic that should be run every time the app starts, such as seeding database data, can be added to `src/server/scripts/setup.ts`.
+
+When using tRPC via hooks, make sure to assign each one before using it. For example:
+
+```
+const trpc = useTRPC();
+const someMutation = useMutation(trpc.mutationOptions(...));
+```
