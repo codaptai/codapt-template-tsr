@@ -4,6 +4,7 @@ import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 import { config } from "vinxi/plugins/config";
 import { env } from "./src/server/env";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
 
 export default createApp({
   server: {
@@ -62,6 +63,7 @@ export default createApp({
           generatedRouteTree: "./src/generated/routeTree.gen.ts",
         }),
         reactRefresh(),
+        nodePolyfills(),
       ],
     },
   ],
