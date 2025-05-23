@@ -23,7 +23,7 @@ Never use headers with tRPC. Pass all data, including authentication tokens, as 
 
 For all frontend components, focus on good design, using your own judgement when there is not a clear intended direction. Take two passes at each component/page -- first, implement the functionality, then re-visit it to improve the design as per any specifications or best practices.
 
-When you're creating pages that don't wrap other pages, **always** include "index.tsx" in the filename so that we don't accidentally have clashing routes. See the `tanstack-router/pages` document for details.
+When you're creating pages that don't wrap other pages, **always** include "index.tsx" in the filename so that we don't accidentally have clashing routes. See the `tanstack-router/pages` document for details. For example, rather than `some-page.tsx`, use `some-page/index.tsx` or `some-page.index.tsx`.
 
 Put non-route components in the `src/components` directory.
 

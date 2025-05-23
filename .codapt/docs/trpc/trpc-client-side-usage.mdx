@@ -13,6 +13,27 @@ function Users() {
 }
 ```
 
+## Making a query directly using the query client
+
+```tsx
+import { useTRPCClient } from "~/trpc/react";
+
+function SomeComponent() {
+  const trpcClient = useTRPCClient();
+
+  useEffect(() => {
+    trpcClient.greeting
+      .query({ name: "Jerry" })
+      .then((result) => {
+        console.log(result.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+}
+```
+
 ## Usage
 
 The philosophy of this client is to provide thin and type-safe factories which work natively and type-safely with Tanstack React Query. This means just by following the autocompletes the client gives you, you can focus on building just with the knowledge the [TanStack React Query docs](https://tanstack.com/query/latest/docs/framework/react/overview) provide.
