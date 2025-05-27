@@ -47,3 +47,5 @@ When using tRPC via hooks, make sure to assign each one before using it. For exa
 const trpc = useTRPC();
 const someMutation = useMutation(trpc.mutationOptions(...));
 ```
+
+If you ever write the pattern `trpc.someProcedure.useQuery(...)`, or `trpc.someProcedure.useMutation(...)`, modify the file again to use the correct pattern as shown above.
