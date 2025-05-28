@@ -201,6 +201,9 @@ Available for all subscription procedures. Provides a type-safe identify functio
 Note that you need to have either the [`httpSubscriptionLink`](/docs/client/links/httpSubscriptionLink) or [`wsLink`](/docs/client/links/wsLink) configured in your tRPC client to use subscriptions.
 
 ```tsx
+import { useSubscription } from "@trpc/tanstack-react-query";
+import { useTRPC } from "~/trpc/react";
+
 function SubscriptionExample() {
   const trpc = useTRPC();
   const subscription = useSubscription(
