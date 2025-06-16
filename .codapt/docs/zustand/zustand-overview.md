@@ -39,3 +39,15 @@ function Controls() {
   return <button onClick={increasePopulation}>one up</button>;
 }
 ```
+
+## Computed values
+
+You should not try to create computed values as functions in the state. Instead, create new custom hooks for them. For example:
+
+```tsx
+const useSquaredBears = () =>
+  Math.pow(
+    useStore((state) => state.bears),
+    2,
+  );
+```
