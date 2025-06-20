@@ -1,1 +1,3 @@
-You can save objects to Minio, which is running in Docker Compose. Do not pass Minio URLs directly to the user as they won't be able to access it since it's inside Docker. Just read/write to it from server code.
+You can save objects to Minio, which is running in Docker Compose, and available at `minioBaseUrl` (defined in `src/server/minio.ts`).
+
+Make sure to set up bucket creation logic in `src/server/scripts/setup.ts` for any buckets that you plan to use.
