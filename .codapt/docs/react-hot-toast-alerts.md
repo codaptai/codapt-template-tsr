@@ -4,7 +4,7 @@ We can use `react-hot-toast` version `^2.5.2` to show pop-up alerts (toasts) as 
 import toast from "react-hot-toast";
 
 export function MyComponent(...) {
-  function onSomeEvent() {
+  async function onSomeEvent() {
     // success alert
     toast.success("some message");
 
@@ -12,7 +12,7 @@ export function MyComponent(...) {
     toast.success("some error message");
 
     // we can also tie a toast to a promise, which will have a loading state followed by a success or error state
-    toast.promise(
+    const saveSettingsResult = await toast.promise(
       saveSettings(settings),
       {
         loading: "Saving...",
@@ -20,6 +20,13 @@ export function MyComponent(...) {
         error: "Could not save.",
       }
     );
+    // or, alternatively
+    const saveSettingsPromise = saveSettings(settings);
+    void toast.promise(
+      saveSettingsPromise,
+      // ...
+    )
+    const saveSettingsResult = await saveSettingsPromise;
   };
 
   // ...
