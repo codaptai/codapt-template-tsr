@@ -15,3 +15,5 @@ if (result) {
   // the password is incorrect
 }
 ```
+
+Note that the ADMIN_PASSWORD environment variable is the plain-text admin password, not a hashed password.
