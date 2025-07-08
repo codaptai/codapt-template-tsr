@@ -8,9 +8,6 @@ export function createRouter() {
     scrollRestoration: true,
     defaultPreload: "intent",
     defaultPendingComponent: () => <div>Loading...</div>,
-    Wrap: function WrapComponent({ children }: { children: React.ReactNode }) {
-      return <TRPCReactProvider>{children}</TRPCReactProvider>;
-    },
   });
 
   return router;
