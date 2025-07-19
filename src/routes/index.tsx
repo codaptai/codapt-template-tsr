@@ -7,7 +7,8 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div className="p-2">
-      <h3>Hello world!</h3>
+      {/* Remove this when adding actual content/functionality */}
+      <h3 className="text-blue-500">Actual app content will go here</h3>
     </div>
   );
 }
