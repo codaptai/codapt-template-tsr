@@ -15,7 +15,7 @@ Whenever possible, try to break up large pages and components into smaller compo
 
 When storing data like auth tokens, we should use Zustand Persist.
 
-You can import from `src/...` with the alias `~/...`.
+You can import from `src/...` with the alias `~/...`. Always use `~/...` imports over relative imports whenever possible.
 
 Keep server-specific code in `src/server`, and avoid importing files in `src/server` from files outside of `src/server`. This helps maintain clean client-server separation.
 
