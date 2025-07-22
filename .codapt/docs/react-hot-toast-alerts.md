@@ -5,6 +5,9 @@ import toast from "react-hot-toast";
 
 export function MyComponent(...) {
   async function onSomeEvent() {
+    // notice alert
+    toast("some message");
+
     // success alert
     toast.success("some message");
 
