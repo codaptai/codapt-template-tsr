@@ -5,6 +5,7 @@ import tsConfigPaths from "vite-tsconfig-paths";
 import { config } from "vinxi/plugins/config";
 import { env } from "./src/server/env";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
+import { consoleForwardPlugin } from "./vite-console-forward-plugin";
 
 export default createApp({
   server: {
@@ -40,6 +41,18 @@ export default createApp({
       ],
     },
     {
+      type: "http",
+      name: "debug",
+      base: "/api/debug/client-logs",
+      handler: "./src/server/debug/client-logs-handler.ts",
+      target: "server",
+      plugins: () => [
+        tsConfigPaths({
+          projects: ["./tsconfig.json"],
+        }),
+      ],
+    },
+    {
       type: "spa",
       name: "client",
       handler: "./index.html",
@@ -64,6 +77,11 @@ export default createApp({
         }),
         reactRefresh(),
         nodePolyfills(),
+        consoleForwardPlugin({
+          enabled: true,
+          endpoint: "/api/debug/client-logs",
+          levels: ["log", "warn", "error", "info", "debug"],
+        }),
       ],
     },
   ],
