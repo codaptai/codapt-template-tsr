@@ -15,3 +15,5 @@ for await (const textPart of textStream) {
   process.stdout.write(textPart);
 }
 ```
+
+Note that LLMs often return markdown-formatted text. If they're emitting content for the user consider rendering markdown text output.
