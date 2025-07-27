@@ -47,6 +47,14 @@ export default createApp({
       handler: "./src/server/debug/client-logs-handler.ts",
       target: "server",
       plugins: () => [
+        config("allowedHosts", {
+          // @ts-ignore
+          server: {
+            allowedHosts: env.BASE_URL
+              ? [env.BASE_URL.split("://")[1]]
+              : undefined,
+          },
+        }),
         tsConfigPaths({
           projects: ["./tsconfig.json"],
         }),
