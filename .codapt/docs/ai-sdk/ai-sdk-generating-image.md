@@ -2,6 +2,8 @@ The AI SDK provides the generateImage function to generate images based on a giv
 
 You should use `openai.image("gpt-image-1")` or `openai.image("dall-e-3")` to generate images, unless otherwise specified.
 
+IMPORTANT: You must import `experimental_generateImage`, NOT JUST `generateImage`.
+
 ```
 import { experimental_generateImage as generateImage } from 'ai';
 import { openai } from '@ai-sdk/openai';
