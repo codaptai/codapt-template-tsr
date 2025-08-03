@@ -1,7 +1,7 @@
 You can create a procedure that streams multiple values with:
 
 ```
-const someProcedure = baseProcedure.query(async function* () {
+const someStream = baseProcedure.query(async function* () {
   for (let i = 0; i < 3; i++) {
     await new Promise((resolve) => setTimeout(resolve, 500));
     yield {
@@ -16,3 +16,5 @@ const someProcedure = baseProcedure.query(async function* () {
 ```
 
 Then, on the React client side, `myQuery.data` will be an array of all the data received so far (including previous values).
+
+IMPORTANT: The names of all streaming procedures _must_ end with `Stream`. For example, a procedure to get streaming updates from a chat, you might call it `getChatStream` or `chatStream`.
