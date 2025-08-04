@@ -31,6 +31,16 @@ function SomeComponent() {
         console.error(error);
       });
   }, []);
+
+  // or, for a streaming query, we can await the query to get an async iterator:
+
+  async function getStreamingQuery() {
+    const result = await trpcClient.someStream.query({ name: "Jerry" });
+
+    for await (const chunk of result) {
+      console.log(chunk);
+    }
+  }
 }
 ```
 
